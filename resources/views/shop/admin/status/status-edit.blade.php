@@ -1,0 +1,23 @@
+@extends('shop.admin.layouts.app')
+@section('content')
+<div class="container p-5 col-md-9">
+    <div class="card">
+        <div class="card-header bg-dark lead">
+            Editar Status
+        </div>
+        <div class="card-body">
+            <form action="{{route('status.update', $status->id)}}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" name="name" value="{{$status->name}}" class="form-control">
+                </div>
+                <div class="text-center my-4">
+                    <button type="submit" class="btn btn-outline-primary">Editar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
