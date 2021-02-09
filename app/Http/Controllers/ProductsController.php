@@ -22,12 +22,11 @@ class ProductsController extends Controller
     }
 
     public function list(){
-        $categories = new Categories;
-        $all_categories = $categories->list();
+        $products = DB::table('products')
+        ->select('id', 'name', 'description', 'price', 'url')
+        ->paginate(6);
 
-        $products = DB::table('products')->paginate(6);
-
-        return view('shop.welcome', ['products' => $products]);
+        return response()->json($products, 200);
     }
 
     public function search(Request $request){
@@ -80,12 +79,7 @@ class ProductsController extends Controller
     {
         $product = DB::table('products')->where('url', $url)->first();
 
-        if(!empty($product)){
-            return view('shop.product-detail', ['product' => $product]);
-        }else{
-            return "error";
-        }
-        exit;
+        return response()->json($product);
     }
 
     /**

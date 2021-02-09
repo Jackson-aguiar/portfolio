@@ -29,7 +29,9 @@ Route::group(['prefix' => 'pokemon'], function () {
 Route::group(['prefix' => 'shop'], function () {
     //Client Routes
     Auth::routes();
-    Route::get('/', [\App\Http\Controllers\ProductsController::class, 'list'])->name('shop');
+    Route::get('/', function(){
+        return view('shop.welcome');
+    })->name('shop');
     Route::get('cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
     Route::resource('cart_products', \App\Http\Controllers\CartProductsController::class);
     Route::get('products/category/{id}', [\App\Http\Controllers\CategoriesProductsController::class, 'list'])->name('product.category');
