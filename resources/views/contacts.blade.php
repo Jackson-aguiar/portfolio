@@ -9,13 +9,13 @@
                 <div class="container ml-4">
                     <div class="row">
                         <div class="col-sm mr-auto">
-                            <a href="">
-                                <p class="lead"><i class="fab fa-linkedin mr-2"></i>LinkedIn</p>
+                            <a href="https://www.linkedin.com/in/jackson-souza-747361185/" class="lead" target="_blank">
+                                <i class="fab fa-linkedin mr-2"></i>LinkedIn
                             </a>
                         </div>
                         <div class="col-sm mr-auto">
-                            <a href="">
-                                <p class="lead"><i class="fab fa-github mr-2"></i>Github</p>
+                            <a href="https://github.com/Jackson-aguiar" class="lead" target="_blank">
+                                <i class="fab fa-github mr-2"></i>Github
                             </a>
                         </div>
                         <div class="col-sm ml-auto">
