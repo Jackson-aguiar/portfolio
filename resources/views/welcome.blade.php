@@ -77,7 +77,7 @@
                     </div>
                     <div class="row d-flex justify-content-center mt-3">
                         <small class="text-muted">
-                            <a class="btn btn-sm btn-dark" href="{{route('pokemon')}}">Vizualizar</a>
+                            <a class="btn btn-sm btn-dark" href="{{route('pokemon')}}">Visualizar</a>
                         </small>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="row d-flex justify-content-center mt-3">
                         <small class="text-muted">
-                            <a class="btn btn-sm btn-dark" href="{{route('shop')}}">Vizualizar</a>
+                            <a class="btn btn-sm btn-dark" href="{{route('shop')}}">Visualizar</a>
                         </small>
                     </div>
                 </div>
