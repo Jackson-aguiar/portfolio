@@ -31,6 +31,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
 //Página Pokémon
 Route::group(['prefix' => 'pokemon'], function () {
     Route::get('/', [PokemonController::class, 'index'])->name('pokemon');
