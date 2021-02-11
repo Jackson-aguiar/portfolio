@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
+<head><meta charset="gb18030">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portifólio</title>
@@ -30,7 +30,7 @@
                 <a class="nav-link" href="#projetos">Projetos<span class="sr-only">(current)</span></a>
               </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contatos</a>
+                <a class="nav-link" href="{{route('try')}}">Contatos</a>
               </li>
           </ul>
         </div>
