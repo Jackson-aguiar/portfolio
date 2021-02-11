@@ -31,6 +31,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/contacts', function () {
+    return view('contacts');
+})->name('contacts');
+
 
 //Página Pokémon
 Route::group(['prefix' => 'pokemon'], function () {
