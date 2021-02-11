@@ -30,7 +30,7 @@
                 <a class="nav-link" href="#projetos">Projetos<span class="sr-only">(current)</span></a>
               </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('try')}}">Contatos</a>
+                <a class="nav-link" href="#">Contatos</a>
               </li>
           </ul>
         </div>
