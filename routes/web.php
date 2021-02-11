@@ -56,7 +56,7 @@ Route::group(['prefix' => 'shop'], function () {
         //página inicial admin
         Route::get('/', function(){
             return view('shop.admin.dashboard');
-        });
+        })->name('dashboard');
 
         //Rotas resource para crud
         Route::resource('products', ProductsController::class);
