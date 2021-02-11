@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class isAdmin
 {
@@ -16,6 +17,15 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if(Auth::check()){
+            //Verifica se o usuário é um Admin
+            if(!Auth::user()->isAdmin){
+                return redirect()->route('fallback', ['fallbackPlaceholder' => '404']);
+            } else {
+                return $next($request);
+            }
+        } else {
+            return redirect()->route('fallback', ['fallbackPlaceholder' => '404']);
+        }
     }
 }

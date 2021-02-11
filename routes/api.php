@@ -20,6 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'shop'], function () {
     Route::get('products-list', [\App\Http\Controllers\ProductsController::class, 'list']);
-    Route::get('product-detail/{url}', [\App\Http\Controllers\ProductsController::class, 'show']);
+    Route::post('product-detail', [\App\Http\Controllers\ProductsController::class, 'show']);
 });
 

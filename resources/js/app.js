@@ -22,6 +22,7 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('products-page', require('./components/Products.vue').default);
+Vue.component('detail-page', require('./components/ProductDetail.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,4 +32,5 @@ Vue.component('products-page', require('./components/Products.vue').default);
 
 const app = new Vue({
     el: '#app',
+
 });

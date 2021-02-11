@@ -30,7 +30,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                 <a
-                    v-on:click="productDetail(product.url)"
+                    :href="'/shop/product/detail/' + product.url"
                     class="btn btn-sm btn-primary text-light m-2 col-9"
                 >
                     <i class="fal fa-info-circle mr-2"></i>Ver Detalhes
@@ -61,7 +61,7 @@
     export default{
         data () {
             return {
-                products: []
+                products: [],
             }
         },
         mounted () {
@@ -77,14 +77,8 @@
                     console.log(error);
                 })
             },
-            productDetail (props) {
-                axios.get('/api/shop/product-detail/' + props)
-                .then((response) => {
-                    console.log('resposta ' + response.data.price);
-                })
-                .catch(function(error){
-                    console.log('error' + error);
-                });
+            productDetail(event){
+
             }
         }
     }
