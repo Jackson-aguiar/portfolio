@@ -38,8 +38,9 @@ Route::get('/contacts', function () {
 
 //Página Pokémon
 Route::group(['prefix' => 'pokemon'], function () {
-    Route::get('/', [PokemonController::class, 'index'])->name('pokemon');
-    Route::post('search', [PokemonController::class, 'search'])->name('pokesearch');
+    Route::get('/', function(){
+        return view('layouts.app-pokemon');
+    })->name('pokemon');
 });
 
 

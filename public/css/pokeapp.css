@@ -5,6 +5,10 @@ body, html {
     background-image: url('../img/pokemon/background.jpg');
 }
 
+.main-title{
+ font-family: 'Fredoka One';
+}
+
 .text-label{
     font-family: 'Kanit';
     font-size: 20px;

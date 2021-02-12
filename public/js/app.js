@@ -1928,6 +1928,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1936,22 +1953,28 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.searchPokemon();
+    this.searchPokemon(); //metodo de busca
   },
   methods: {
     searchPokemon: function searchPokemon() {
       var _this = this;
 
-      axios.get('https://pokeapi.co/api/v2/pokemon/' + this.pokemon + '/').then(function (response) {
-        _this.data = response.data;
-      })["catch"](function (error) {
-        console.log(error);
-      });
+      if (this.pokemon !== null && this.pokemon !== '') {
+        axios.get('https://pokeapi.co/api/v2/pokemon/' + this.pokemon.toLowerCase() + '/') //requisitando api
+        .then(function (response) {
+          _this.data = response.data; //atribuindo a resposta a variavel
+        })["catch"](function (error) {
+          //caso erro, escreva no console
+          console.log(error);
+        });
+      }
     },
     ucFirst: function ucFirst(string) {
+      //String para primeira letra em maiúsculo
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
     arrayLength: function arrayLength(array) {
+      //Retorna Tamanho do array
       return array.length;
     }
   }
@@ -37925,7 +37948,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container col-md-5" }, [
+  return _c("div", { staticClass: "container my-5 col-md-5" }, [
     _c("div", { staticClass: "row d-flex justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c(
@@ -37969,7 +37992,18 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _vm._m(0)
+                _c("div", { staticClass: "input-group-append" }, [
+                  _c(
+                    "button",
+                    { staticClass: "btn btn-sm btn-outline-primary" },
+                    [
+                      _c("img", {
+                        staticClass: "img-fluid",
+                        attrs: { src: "img/pokemon/search.png" }
+                      })
+                    ]
+                  )
+                ])
               ])
             ])
           ]
@@ -37996,7 +38030,7 @@ var render = function() {
         _vm._v(" "),
         _c("hr", { staticClass: "bg-light" }),
         _vm._v(" "),
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c(
           "div",
@@ -38005,7 +38039,7 @@ var render = function() {
               "row col-sm-18 col-md-18 col-lg-16 col-xl-15 text-light"
           },
           _vm._l(_vm.data.types, function(types) {
-            return _c("div", { key: types, staticClass: "col" }, [
+            return _c("div", { key: types.length, staticClass: "col" }, [
               _c("p", { staticClass: "nav-link lead" }, [
                 _vm._v(
                   "\n                    " +
@@ -38018,12 +38052,12 @@ var render = function() {
           0
         ),
         _vm._v(" "),
-        _vm._m(2),
+        _vm._m(1),
         _vm._v(" "),
         _vm._l(_vm.data.abilities, function(abilities) {
           return _c(
             "div",
-            { key: abilities, staticClass: "row col-sm-7 text-light" },
+            { key: abilities.length, staticClass: "row col-sm-18 text-light" },
             [
               _c("div", { staticClass: "col" }, [
                 _c("p", { staticClass: "nav-link lead" }, [
@@ -38038,29 +38072,53 @@ var render = function() {
           )
         }),
         _vm._v(" "),
-        _vm._m(3),
+        _vm._m(2),
         _vm._v(" "),
-        _vm._l(_vm.data.stats, function(stats) {
-          return _c(
-            "div",
-            { key: stats, staticClass: "row col-sm-7 text-light" },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("p", { staticClass: "nav-link lead" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.ucFirst(stats.stat.name)) +
-                      ": " +
-                      _vm._s(stats.base_stat) +
-                      "\n                "
-                  )
-                ])
+        _c("div", { staticClass: "row col-12 text-light" }, [
+          _c("ul", { staticClass: "nav" }, [
+            _c("li", { staticClass: "nav-item" }, [
+              _c("p", { staticClass: "nav-link lead" }, [
+                _vm._v("HP: " + _vm._s(_vm.data.stats[0].base_stat))
               ])
-            ]
-          )
-        }),
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c("p", { staticClass: "nav-link lead" }, [
+                _vm._v("Ataque: " + _vm._s(_vm.data.stats[1].base_stat))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c("p", { staticClass: "nav-link lead" }, [
+                _vm._v("Defesa: " + _vm._s(_vm.data.stats[2].base_stat))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c("p", { staticClass: "nav-link lead" }, [
+                _vm._v(
+                  "Ataque Especial: " + _vm._s(_vm.data.stats[3].base_stat)
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c("p", { staticClass: "nav-link lead" }, [
+                _vm._v(
+                  "Defesa Especial: " + _vm._s(_vm.data.stats[4].base_stat)
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c("p", { staticClass: "nav-link lead" }, [
+                _vm._v("Velocidade: " + _vm._s(_vm.data.stats[5].base_stat))
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
-        _vm._m(4),
+        _vm._m(3),
         _vm._v(" "),
         _c(
           "div",
@@ -38090,17 +38148,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-append" }, [
-      _c("button", { staticClass: "btn btn-sm btn-outline-primary" }, [
-        _vm._v("\n                                Buscar"),
-        _c("img", { staticClass: "img-fluid", attrs: { src: "" } })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row text-light" }, [
       _c("h4", { staticClass: "jumbotron-heading" }, [_vm._v("Tipo")])
     ])
@@ -38121,7 +38168,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "row col-sm-4 col-md-18 col-lg-16 col-xl-15 text-light" },
+      { staticClass: "row col-sm-18 col-md-18 col-lg-16 col-xl-15 text-light" },
       [_c("h4", { staticClass: "jumbotron-heading" }, [_vm._v("Status")])]
     )
   },
