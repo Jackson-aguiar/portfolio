@@ -32,6 +32,9 @@
             <p class="nav-link animate__animated animate__backInUp">JavaScript</p>
         </li>
         <li class="nav-item">
+            <p class="nav-link animate__animated animate__backInUp">Vue.js</p>
+        </li>
+        <li class="nav-item">
             <p class="nav-link animate__animated animate__backInUp">Bootstrap</p></li>
         <li class="nav-item">
             <p class="nav-link animate__animated animate__backInUp">Laravel</p>

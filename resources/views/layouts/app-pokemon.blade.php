@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="{{asset('css/pokeapp.css')}}">
 </head>
 <body>
-    <div class="container-fluid h-100">
-        <div class="row justify-content-center align-items-center h-100">
-            @yield('content')
+    <div class="container-fluid h-50">
+        <div id="app" class="row justify-content-center align-items-center h-100">
+            <poke-page></poke-page>
         </div>
     </div>
+    <script src="{{mix('js/app.js')}}">
+    </script>
 </body>
 </html>

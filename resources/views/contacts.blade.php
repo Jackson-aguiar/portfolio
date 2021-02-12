@@ -3,7 +3,7 @@
     <div class="container col-md-6">
         <div class="card">
             <div class="card-header bg-dark text-light lead">
-                Contatos
+                Contato
             </div>
             <div class="card-body">
                 <div class="container ml-4">
