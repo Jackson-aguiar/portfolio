@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container-fluid h-50">
-        <div id="app" class="row justify-content-center align-items-center h-100">
+        <div id="app" class="row justify-content-center mb-5 align-items-center h-100">
             <poke-page></poke-page>
         </div>
     </div>
