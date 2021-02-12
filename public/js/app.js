@@ -37964,7 +37964,7 @@ var render = function() {
           [
             _c("div", { staticClass: "form-group" }, [
               _c("label", { staticClass: "text-light text-label" }, [
-                _vm._v("Buscar Pokémon")
+                _vm._v("Busca Pokémon")
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group" }, [

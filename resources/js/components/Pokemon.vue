@@ -5,7 +5,7 @@
             <div class="col-md-8">
                 <form @submit.prevent="searchPokemon">
                     <div class="form-group">
-                        <label class="text-light text-label">Buscar Pokémon</label>
+                        <label class="text-light text-label">Busca Pokémon</label>
                         <div class="input-group">
                             <input class="form-control" v-model="pokemon" placeholder="Digite o nome de um pokémon, Ex: Pikachu">
                             <div class="input-group-append">

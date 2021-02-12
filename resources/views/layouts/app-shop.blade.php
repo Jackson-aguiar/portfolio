@@ -9,10 +9,15 @@
     <!--Style-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="sortcut icon" href="{{asset('img/cerrado-icon.png')}}" type="image/png" />
     <link rel="stylesheet" href="{{asset('css/shopapp.css')}}">
 </head>
 <body>
-
+    <div class=" m-3 col-3 position-fixed fixed-bottom">
+        <a href="{{route('home')}}">
+            <i class="fas fa-home fa-lg"></i>
+        </a>
+    </div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{route('shop')}}"><i class="fad fa-shopping-cart m-1 "></i>Shop</a>
@@ -38,13 +43,13 @@
           </ul>
 
         <ul class="nav col-md-6">
-            <li class="nav-item col-md-9">
+            <li class="nav-item col-md-9 mb-1">
                 <form action="{{route('product.search')}}" method="POST">
                     @csrf
                     <div class="input-group">
                         <input class="form-control" type="search" name="search" placeholder="Buscar Produto" aria-label="Search">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+                            <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button>
                         </div>
                     </div>
                   </form>
