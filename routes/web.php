@@ -53,6 +53,7 @@ Route::group(['prefix' => 'shop'], function () {
     Route::get('cart', [CartController::class, 'index'])->name('cart');
     Route::resource('cart_products', CartProductsController::class);
     Route::get('products/category/{id}', [CategoriesProductsController::class, 'list'])->name('product.category');
+    Route::get('product/detail/{url}', [ProductsController::class, 'productDetail'])->name('product.detail');
     Route::post('search', [ProductsController::class, 'search'])->name('product.search');
 
     //Admin Routes

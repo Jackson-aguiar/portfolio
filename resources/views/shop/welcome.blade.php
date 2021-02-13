@@ -7,13 +7,13 @@
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Second slide"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+                    <img src="{{asset('img/carousel-1.jpg')}}" class="img-fluid">
                   </div>
                   <div class="carousel-item">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Second slide"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+                    <img src="{{asset('img/carousel-2.jpg')}}" class="img-fluid">
                   </div>
                   <div class="carousel-item">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Second slide"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+                    <img src="{{asset('img/carousel-3.jpg')}}" class="img-fluid">
                   </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -51,7 +51,7 @@
                         <div class="container mt-3">
                             <div class="container">
                                 <div class="row justify-content-center">
-                                    <a href="{{route('products.show', $product->url)}}" class="btn btn-sm btn-primary text-light m-2 col-9">
+                                    <a href="{{route('product.detail', $product->url)}}" class="btn btn-sm btn-primary text-light m-2 col-9">
                                         <i class="fal fa-info-circle mr-2"></i>Ver Detalhes
                                     </a>
                                 </div>

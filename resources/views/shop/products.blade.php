@@ -16,7 +16,7 @@
                                 <p class="card-text"><small class="text-muted">R$ {{$product->price}}</small></p>
                             </div>
                             <div class="row justify-content-center">
-                                <a href="{{route('products.show', $product->url)}}" class="btn btn-sm btn-primary text-light m-2">
+                                <a href="{{route('product.detail', $product->url)}}" class="btn btn-sm btn-primary text-light m-2">
                                     <i class="fal fa-info-circle mr-2"></i>Ver Detalhes
                                 </a>
                             </div>

@@ -10,7 +10,7 @@
                     @csrf
                     <div class="form-group">
                         <label class="form-label">Nome</label>
-                        <input type="text" name="name" class="form-control" @error('name') is-invalid @enderror>
+                        <input type="text" name="name" class="form-control" class="@error('name') is-invalid @enderror" >
                         @error('name')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror

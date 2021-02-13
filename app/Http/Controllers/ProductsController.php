@@ -15,13 +15,22 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    /*
+    * Retorna Todos os produtos para view - admin
+    */
     public function index()
     {
-        $products = DB::table('products')->select('id', 'name', 'description', 'price', 'url')->get();
+        $products = DB::table('products')
+        ->select('id', 'name', 'description', 'price', 'url')
+        ->paginate(12);
 
         return view('shop.admin.products.products-list', ['products' => $products]);
     }
 
+    /*
+    *Listagem de produtos - cliente
+    */
     public function list(){
         $categories = new Categories;
         $all_categories = $categories->list();
@@ -31,12 +40,28 @@ class ProductsController extends Controller
         return view('shop.welcome', ['products' => $products]);
     }
 
+    /*
+    * Busca produtos por nome - cliente
+    */
     public function search(Request $request){
         $products = DB::table('products')
         ->where('name', 'LIKE', '%' . $request->search . '%')
         ->paginate(9);
 
         return view('shop.products', ['products' => $products]);
+    }
+
+    public function productDetail($url){
+        $product = DB::table('products')
+        ->where('url', $url)
+        ->first();
+
+        //Verifica se o produto foi encontrado
+        if(!empty($product)){
+            return view('shop.product-detail', ['product' => $product]);
+        }else{
+            return redirect()->route('fallback', ['fallbackPlaceholder' => '404']);
+        }
     }
 
     /**
@@ -58,6 +83,7 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
 
+        //Validação de campos
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'description' => 'required|max:191',
@@ -68,8 +94,12 @@ class ProductsController extends Controller
             'weight' => 'required',
         ]);
 
+        //Verifica se há erros
         if($validator->fails()){
-            return redirect()->route('products.create')->withErrors($validator)->withInput();
+            return redirect()
+            ->route('products.create')
+            ->withErrors($validator)
+            ->withInput();
         }
 
         DB::table('products')->insert([
@@ -94,14 +124,7 @@ class ProductsController extends Controller
      */
     public function show($url)
     {
-        $product = DB::table('products')->where('url', $url)->first();
 
-        if(!empty($product)){
-            return view('shop.product-detail', ['product' => $product]);
-        }else{
-            return "error";
-        }
-        exit;
     }
 
     /**
@@ -112,7 +135,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = DB::table('products')->where('id', '=', $id)->first();
+        $product = DB::table('products')
+        ->where('id', '=', $id)
+        ->first();
 
         return view('shop.admin.products.products-edit', ['product' => $product]);
     }
@@ -137,7 +162,10 @@ class ProductsController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect()->route('products.edit', $product->id)->withErrors($validator)->withInput();
+            return redirect()
+            ->route('products.edit', $product->id)
+            ->withErrors($validator)
+            ->withInput();
         }
 
         DB::table('products')->where('id', $product->id)->update([
