@@ -1,6 +1,13 @@
 @extends('layouts.app-shop')
 @section('content')
     <div class="container col-md-9">
+        <!-- Alert -->
+        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            <strong>Alerta</strong> Site Ilustrativo, para fins educacionais!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
 
         <!-- Carousel -->
         <div class="container my-4">
@@ -39,7 +46,7 @@
             @foreach ($products as $product)
                 <div class="col mb-4">
                 <div class="card h-100">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
+                    <img class="bd-placeholder-img card-img-top" src="{{asset('storage/products/'.$product->url . '.jpg')}}" alt="{{$product->url}}">
                     <div class="card-body">
                         <h5 class="card-title lead text-center">{{$product->name}}</h5>
                         <p class="card-text font-weight-light">{{$product->description}}</p>
@@ -76,4 +83,7 @@
             {{$products->links()}}
         </div>
     </div>
+    <script type="text/javascript">
+        $('.alert').alert()
+    </script>
 @endsection

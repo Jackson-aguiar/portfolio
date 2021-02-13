@@ -102,6 +102,24 @@ class ProductsController extends Controller
             ->withInput();
         }
 
+       $nameFile = null; //inicializa variavel para salvar nome da imagem
+
+       //Se a imagem for valida executa o bloco
+       if($request->hasFile('image') && $request->file('image')->isValid()){
+
+        $name = str_replace(' ', '-', $request->name); //Atribuindo o nome de url a imagem
+        $extension = $request->image->extension(); //Requisitando extensão
+        $nameFile = "{$name}.{$extension}"; //Montando nome completo do arquivo
+
+        $upload = $request->image->storeAs('products',$nameFile); //Salvando no diretorio
+
+        if ( !$upload ) //Se o upload tiver falha, retorna com erro
+            return redirect()
+            ->back()
+            ->with('error', 'Falha ao fazer upload')
+            ->withInput();
+       }
+
         DB::table('products')->insert([
             'name' => $request->name,
             'description' => $request->description,

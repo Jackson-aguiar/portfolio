@@ -6,7 +6,7 @@
                 Cadastro de Produtos
             </div>
             <div class="card-body">
-                <form action="{{route('products.store')}}" method="POST">
+                <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label class="form-label">Nome</label>
@@ -56,6 +56,10 @@
                         @error('weight')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Imagem</label>
+                        <input type="file" name="image" class="form-control">
                     </div>
                     <div class="text-center my-4">
                         <button type="submit" class="btn btn-outline-primary">Cadastrar</button>
