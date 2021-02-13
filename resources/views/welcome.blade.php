@@ -15,7 +15,7 @@
                 Olá, meu nome é Jackson, sou recém formado em Análise e Desenvolvimento de Sistemas,
                 e resolvi criar esse site para praticar meus conhecimentos em desenvolvimento WEB
                 e expor esses conhecimentos para que eu possa ter algum feedback sobre os projetos
-                do meu portifólio aqui apresentados, lembrando que o meu foco principal é o back-end.
+                do meu portfólio aqui apresentados, lembrando que o meu foco principal é o back-end.
             </p>
         </div>
     </div>
