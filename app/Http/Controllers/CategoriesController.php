@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+
 
 class CategoriesController extends Controller
 {
@@ -44,6 +46,14 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:50',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->route('categories.create')->withErrors($validator)->withInput();
+        }
+
         DB::table('categories')->insert([
             'name' => $request->name
         ]);
@@ -84,6 +94,14 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, Categories $category)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:50',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->route('categories.edit', $category->id)->withErrors($validator)->withInput();
+        }
+
         DB::table('categories')->where('id', $category->id)->update([
             'name' => $request->name
         ]);

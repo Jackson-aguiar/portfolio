@@ -12,6 +12,9 @@
                 <div class="form-group">
                     <label>Nome</label>
                     <input type="text" name="name" value="{{$status->name}}" class="form-control">
+                    @error('name')
+                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="text-center my-4">
                     <button type="submit" class="btn btn-outline-primary">Editar</button>

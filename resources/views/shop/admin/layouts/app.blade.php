@@ -24,6 +24,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('dashboard')}}" class="nav-link">Home</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{route('shop')}}" class="nav-link">Voltar ao Site</a>
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->

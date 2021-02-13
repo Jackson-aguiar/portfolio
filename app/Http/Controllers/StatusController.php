@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class StatusController extends Controller
 {
@@ -38,6 +39,17 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:50',
+        ]);
+
+        if($validator->fails()){
+            return redirect()
+            ->route('status.create')
+            ->withErrors($validator)
+            ->withInput();
+        }
+
         DB::table('status')->insert([
             'name' => $request->name
         ]);
@@ -76,6 +88,17 @@ class StatusController extends Controller
      */
     public function update(Request $request, Status $status)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:50',
+        ]);
+
+        if($validator->fails()){
+            return redirect()
+            ->route('status.edit', $status->id)
+            ->withErrors($validator)
+            ->withInput();
+        }
+
         DB::table('status')->where('id', $status->id)->update([
             'name' => $request->name
         ]);

@@ -180,6 +180,11 @@ return [
         'username'  => 'usuário',
         'year'      => 'ano',
         'description' => 'descrição',
+        'price' => 'preço',
+        'width' => 'largura',
+        'height' => 'altura',
+        'length'=> 'tamanho',
+        'weight' => 'peso',
         'password_confirmation' => 'confirmação da senha',
     ],
 
