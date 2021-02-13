@@ -66,7 +66,7 @@
             <p class="card-text text-justify font-weight-lighter">
                 A aplicação utiliza uma API chamada de "PokéApi",
                 para buscar o nome do pokémon digitado e trazer informações completas sobre o mesmo.
-                o site foi desenvolvido utilizando vuejs desenvolvido utilizando vue.js.
+                o site foi desenvolvido utilizando vuejs e laravel framework.
             </p>
             </div>
             <div class="card-footer">
