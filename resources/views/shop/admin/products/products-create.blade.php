@@ -1,6 +1,7 @@
 @extends('shop.admin.layouts.app')
 @section('content')
-    <div class="container p-5 col-md-9">
+<script type="text/javascript" src="{{asset('js/jquery.mask.min.js')}}"></script>
+    <div class="container p-5 col-md-9" id="document">
         <div class="card">
             <div class="card-header bg-dark lead">
                 Cadastro de Produtos
@@ -24,35 +25,35 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label">Preço</label>
-                        <input type="text" name="price" class="form-control" @error('price') is-invalid @enderror>
+                        <input type="text" name="price" id="price" class="form-control" @error('price') is-invalid @enderror onkeyup="maskIt()">
                         @error('price')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label class="form-label">Largura</label>
-                        <input type="text" name="width" class="form-control" @error('width') is-invalid @enderror>
+                        <input type="text" id="width" name="width" class="form-control" @error('width') is-invalid @enderror onkeyup="maskIt()">
                         @error('width')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label class="form-label">Altura</label>
-                        <input type="text" name="height" class="form-control" @error('height') is-invalid @enderror>
+                        <input type="text" id="height" name="height" class="form-control" @error('height') is-invalid @enderror onkeyup="maskIt()">
                         @error('height')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label class="form-label">Tamanho</label>
-                        <input type="text" name="length" class="form-control" @error('length') is-invalid @enderror>
+                        <input type="text" id="length" name="length" class="form-control" @error('length') is-invalid @enderror onkeyup="maskIt()">
                         @error('length')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label class="form-label">Peso</label>
-                        <input type="text" name="weight" class="form-control" @error('weight') is-invalid @enderror>
+                        <input type="text" id="weight" name="weight" class="form-control" @error('weight') is-invalid @enderror onkeyup="maskIt()">
                         @error('weight')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -68,4 +69,13 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        function maskIt(){
+            $('#price').mask('#.##0,00', {reverse: true});
+            $('#width').mask('00,00', {reverse: true});
+            $('#height').mask('00,00', {reverse: true});
+            $('#length').mask('00,00', {reverse: true});
+            $('#weight').mask('0000,00', {reverse: true});
+        }
+    </script>
 @endsection

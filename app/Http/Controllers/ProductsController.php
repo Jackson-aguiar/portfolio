@@ -123,11 +123,11 @@ class ProductsController extends Controller
         DB::table('products')->insert([
             'name' => $request->name,
             'description' => $request->description,
-            'price' => $request->price,
-            'width' => $request->width,
-            'height' => $request->height,
-            'length' => $request->length,
-            'weight' => $request->weight,
+            'price' =>  str_replace(',', '.', $request->price),
+            'width' =>  str_replace(',', '.', $request->width),
+            'height' =>  str_replace(',', '.', $request->height),
+            'length' =>  str_replace(',', '.', $request->length),
+            'weight' =>  str_replace(',', '.', $request->weight),
             'url' => str_replace(' ', '-', $request->name)
         ]);
 
@@ -189,11 +189,11 @@ class ProductsController extends Controller
         DB::table('products')->where('id', $product->id)->update([
             'name' => $request->name,
             'description' => $request->description,
-            'price' => $request->price,
-            'width' => $request->width,
-            'height' => $request->height,
-            'length' => $request->length,
-            'weight' => $request->weight,
+            'price' => str_replace(',', '.', $request->price),
+            'width' => str_replace(',', '.', $request->width),
+            'height' => str_replace(',', '.', $request->height),
+            'length' => str_replace(',', '.', $request->length),
+            'weight' => str_replace(',', '.', $request->weight),
             'url' => str_replace($request->name, ' ', '-')
         ]);
 

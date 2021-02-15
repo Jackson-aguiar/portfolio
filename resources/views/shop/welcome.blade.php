@@ -3,7 +3,7 @@
     <div class="container col-md-9">
         <!-- Alert -->
         <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-            <strong>Alerta</strong> Site Ilustrativo, para fins educacionais!
+            <strong>Alerta</strong> Site Ilustrativo para fins educacionais!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
