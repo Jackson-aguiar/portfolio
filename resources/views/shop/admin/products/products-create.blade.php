@@ -71,7 +71,7 @@
     </div>
     <script type="text/javascript">
         function maskIt(){
-            $('#price').mask('#.##0,00', {reverse: true});
+            $('#price').mask('#,00', {reverse: true});
             $('#width').mask('00,00', {reverse: true});
             $('#height').mask('00,00', {reverse: true});
             $('#length').mask('00,00', {reverse: true});

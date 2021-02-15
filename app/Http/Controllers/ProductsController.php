@@ -194,7 +194,7 @@ class ProductsController extends Controller
             'height' => str_replace(',', '.', $request->height),
             'length' => str_replace(',', '.', $request->length),
             'weight' => str_replace(',', '.', $request->weight),
-            'url' => str_replace($request->name, ' ', '-')
+            'url' => str_replace(' ', '-', $request->name)
         ]);
 
         return redirect()->route('products.index');
