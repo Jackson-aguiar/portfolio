@@ -11,7 +11,7 @@
                         @foreach($products as $product)
                         <tr>
                             <td class="text-secondary">{{$product->name}}</td>
-                            <td class="text-right">R$ {{$product->price}}</td>
+                            <td class="text-right text-success">R$ {{str_replace('.', ',', $product->price)}}</td>
                             <td class="text-right">
                                 <form action="{{route('cart_products.destroy', $product->id)}}" method="POST">
                                     @method('DELETE')
@@ -26,8 +26,17 @@
             </div>
             <div class="card-footer">
                 <div class="container">
+                    <table class="table">
+                        <tbody>
+                            <td class="text-secondary">Valor Total</td>
+                            <td class="text-right text-success">R$ {{str_replace('.', ',', $value->total_price)}}</td>
+                        </tbody>
+                    </table>
                     <div class="row d-flex justify-content-center">
-                        <a class="btn btn-primary text-light">Finalizar Compra</a>
+                        <form action="{{route('orders.store')}}" method="POST">
+                            @csrf
+                            <button class="btn btn-primary">Finalizar Compra</button>
+                        </form>
                     </div>
                 </div>
             </div>

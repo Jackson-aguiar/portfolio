@@ -24,6 +24,7 @@ class CartProductsController extends Controller
     public function getProducts(){
         $cartController = new CartController;
 
+        //Retorna Todos Produtos
         $products = DB::table('cart_products')
         ->join('cart', function($join) use ($cartController){
             $join->on('cart_products.cart_id', '=', 'cart.id')
@@ -34,6 +35,21 @@ class CartProductsController extends Controller
         ->get();
 
         return $products;
+    }
+
+    public function getTotal(){
+        $cartController = new CartController;
+
+        $total = DB::table('cart_products')
+        ->join('cart', function($join) use ($cartController){
+            $join->on('cart_products.cart_id', '=', 'cart.id')
+            ->where('cart.session_id', $cartController->getCartID());
+        })
+        ->leftJoin('products', 'products.id', '=', 'cart_products.product_id')
+        ->select(DB::raw('SUM(products.price) as total_price'))
+        ->first();
+
+        return $total;
     }
     /**
      * Show the form for creating a new resource.

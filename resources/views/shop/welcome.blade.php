@@ -53,7 +53,9 @@
                     </div>
                     <div class="card-footer">
                         <div class="row">
-                            <p class="card-text text-success font-weight-light ml-3">R$ {{$product->price}}</p>
+                            <p class="card-text text-success font-weight-light ml-3">
+                                R$ <span class="price" id="price">{{str_replace('.', ',', $product->price)}}</span>
+                            </p>
                         </div>
                         <div class="container mt-3">
                             <div class="container">
@@ -83,7 +85,4 @@
             {{$products->links()}}
         </div>
     </div>
-    <script type="text/javascript">
-        $('.alert').alert()
-    </script>
 @endsection

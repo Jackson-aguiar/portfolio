@@ -56,6 +56,12 @@ Route::group(['prefix' => 'shop'], function () {
     Route::get('product/detail/{url}', [ProductsController::class, 'productDetail'])->name('product.detail');
     Route::post('search', [ProductsController::class, 'search'])->name('product.search');
 
+    //Client Authenticated
+    Route::middleware(['auth'])->group(function () {
+        Route::get('client/orders', [OrdersController::class, 'list'])->name('orders.user');
+        Route::post('order', [OrdersController::class, 'store'])->name('orders.store');
+    });
+
     //Admin Routes
     Route::prefix('admin')->middleware(isAdmin::class)->group(function(){
 
@@ -69,7 +75,8 @@ Route::group(['prefix' => 'shop'], function () {
         Route::resource('categories', CategoriesController::class);
         Route::resource('categories_products', CategoriesProductsController::class);
         Route::resource('status', StatusController::class);
-        Route::resource('orders', OrdersController::class);
+        Route::get('orders', [OrdersController::class, 'index'])->name('orders.index');
+        Route::get('orders', [OrdersController::class, 'edit'])->name('orders.edit');
     });
 
     //Pagina não encontrada!

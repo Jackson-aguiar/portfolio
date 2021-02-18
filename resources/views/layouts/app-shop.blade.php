@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="sortcut icon" href="{{asset('img/cerrado-icon.png')}}" type="image/png" />
     <link rel="stylesheet" href="{{asset('css/shopapp.css')}}">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class=" m-3 col-3 position-fixed fixed-bottom">
@@ -68,7 +70,7 @@
                     <a class="dropdown-item" href="{{route('cart')}}">
                     <i class="fas fa-shopping-cart mr-2"></i>Carrinho
                     </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{{route('orders.user')}}">
                         <i class="fas fa-truck mr-2"></i>Meus Pedidos
                     </a>
                     <div class="dropdown-divider"></div>
@@ -100,7 +102,6 @@
         @yield('content')
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>

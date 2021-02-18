@@ -53,6 +53,8 @@ class StatusController extends Controller
         DB::table('status')->insert([
             'name' => $request->name
         ]);
+
+        return redirect()->route('status.index');
     }
 
     /**

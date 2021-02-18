@@ -22,7 +22,9 @@ class CartController extends Controller
     {
         $products = $cartProducts->getProducts();
 
-        return view('shop.cart', ['products' => $products]);
+        $total = $cartProducts->getTotal();
+
+        return view('shop.cart', ['products' => $products, 'value' => $total]);
     }
 
     /**

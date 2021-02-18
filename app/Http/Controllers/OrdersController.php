@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartProductsController;
 
 class OrdersController extends Controller
 {
@@ -22,6 +25,16 @@ class OrdersController extends Controller
         ->get();
 
         return view('shop.admin.orders.orders-list', ['orders' => $orders]);
+    }
+
+    public function list(){
+        $orders = DB::table('orders')
+        ->where('user_id', Auth::id())
+        ->join('status', 'orders.status_id', '=', 'status.id')
+        ->select('orders.*', 'status.name as status_name')
+        ->get();
+
+        return view('shop.orders', ['orders' => $orders]);
     }
 
     /**
@@ -42,7 +55,19 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cart = new CartController();
+        $cartProducts = new CartProductsController();
+
+        $value = $cartProducts->getTotal();
+        $id = $cart->getCart();
+
+        DB::table('orders')->insert([
+            'user_id' => Auth::id(),
+            'cart_id' => $id->id, //retorna id do carrinho
+            'total_price' => $value->total_price //retorna o valor total do carrinho
+        ]);
+
+        return redirect()->route('orders.user');
     }
 
     /**
