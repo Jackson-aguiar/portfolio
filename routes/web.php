@@ -75,8 +75,8 @@ Route::group(['prefix' => 'shop'], function () {
         Route::resource('categories', CategoriesController::class);
         Route::resource('categories_products', CategoriesProductsController::class);
         Route::resource('status', StatusController::class);
-        Route::get('orders', [OrdersController::class, 'index'])->name('orders.index');
-        Route::get('orders', [OrdersController::class, 'edit'])->name('orders.edit');
+        Route::get('orders/index', [OrdersController::class, 'index'])->name('orders.index');
+        Route::get('orders/edit/{id}', [OrdersController::class, 'edit'])->name('orders.edit');
     });
 
     //Pagina não encontrada!
