@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\CategoriesController as Categories;
+use App\Http\Controllers\CartController;
+use App\Models\Cart;
 
 class ProductsController extends Controller
 {

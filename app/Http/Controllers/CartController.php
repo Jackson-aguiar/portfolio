@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\CartProductsController;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Hash;
 
 class CartController extends Controller
 {
@@ -43,30 +43,37 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store():void
     {
         DB::table('cart')->updateOrInsert([
-            'session_id' => $this->getCartID(),
+            'session_id' => $this->setCartSession(),
             'user_id' => Auth::id(),
         ]);
+
     }
 
+    //Método que retorna o id do carrinho do usuário atual
     public function getCart(){
+
         $cart = DB::table('cart')
-        ->where('session_id', $this->getCartID())
+        ->where('session_id', $this->setCartSession())
         ->select('id')
         ->first();
 
         return $cart;
     }
 
-    public function getCartID(){
-        if(Cookie::get('cart_session_id') == null){
-            Cookie::queue('cart_session_id', Hash::make(Session::getId()), 10080);
+    public function setCartSession(){
+        //Definindo token da sessão
+        $cart_session = Session::get('_token');
+
+        if(Cookie::get('cart_session_id') === null){
+            //Guardando _token em um cookie
+            Cookie::queue('cart_session_id', $cart_session , 10080);
+            return $cart_session;
+        }else{
             return Cookie::get('cart_session_id');
         }
-
-       return Cookie::get('cart_session_id');
     }
 
     /**

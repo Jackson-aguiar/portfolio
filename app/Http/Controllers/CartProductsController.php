@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class CartProductsController extends Controller
 {
@@ -28,7 +29,7 @@ class CartProductsController extends Controller
         $products = DB::table('cart_products')
         ->join('cart', function($join) use ($cartController){
             $join->on('cart_products.cart_id', '=', 'cart.id')
-            ->where('cart.session_id', $cartController->getCartID());
+            ->where('cart.session_id', $cartController->setCartSession());
         })
         ->leftJoin('products', 'products.id', '=', 'cart_products.product_id')
         ->select('products.*')
@@ -43,7 +44,7 @@ class CartProductsController extends Controller
         $total = DB::table('cart_products')
         ->join('cart', function($join) use ($cartController){
             $join->on('cart_products.cart_id', '=', 'cart.id')
-            ->where('cart.session_id', $cartController->getCartID());
+            ->where('cart.session_id', $cartController->setCartSession());
         })
         ->leftJoin('products', 'products.id', '=', 'cart_products.product_id')
         ->select(DB::raw('SUM(products.price) as total_price'))
@@ -71,7 +72,8 @@ class CartProductsController extends Controller
     {
         $cart = new CartController;
 
-        $cart->store($request);
+        $cart->store();
+
         $cart_id = $cart->getCart();
 
         DB::table('cart_products')->insert([
