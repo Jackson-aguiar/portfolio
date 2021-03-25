@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\isAdmin;
 
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesProductsController;
 use App\Http\Controllers\CategoriesController;
@@ -35,6 +36,7 @@ Route::get('/contacts', function () {
     return view('contacts');
 })->name('contacts');
 
+Route::get('/curriculum', [DownloadController::class, 'download'])->name('curriculum');
 
 //Página Pokémon
 Route::group(['prefix' => 'pokemon'], function () {
