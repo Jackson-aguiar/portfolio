@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::group(['prefix' => 'shop'], function () {
-    Route::get('products-list', [\App\Http\Controllers\ProductsController::class, 'list']);
-    Route::post('product-detail', [\App\Http\Controllers\ProductsController::class, 'show']);
-});
+// Route::group(['prefix' => 'shop'], function () {
+//     Route::get('products-list', [\App\Http\Controllers\ProductsController::class, 'list']);
+//     Route::post('product-detail', [\App\Http\Controllers\ProductsController::class, 'show']);
+// });
 

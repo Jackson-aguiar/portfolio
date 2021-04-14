@@ -104,7 +104,7 @@ class ProductsController extends Controller
             ->withInput();
         }
 
-       $nameFile = null; //inicializa variavel para salvar nome da imagem
+       $nameFile = null; //Inicializa variavel para salvar nome da imagem
 
        //Se a imagem for valida executa o bloco
        if($request->hasFile('image') && $request->file('image')->isValid()){

@@ -20,6 +20,7 @@ class CartController extends Controller
      */
     public function index(CartProductsController $cartProducts)
     {
+        //Retorna os produtos da sessão atual e os valores
         $products = $cartProducts->getProducts();
 
         $total = $cartProducts->getTotal();
@@ -45,6 +46,7 @@ class CartController extends Controller
      */
     public function store():void
     {
+        //Cria um novo carrinho de compras
         DB::table('cart')->updateOrInsert([
             'session_id' => $this->setCartSession(),
             'user_id' => Auth::id(),
@@ -55,6 +57,7 @@ class CartController extends Controller
     //Método que retorna o id do carrinho do usuário atual
     public function getCart(){
 
+        //Pega o carrinho da sessão atual
         $cart = DB::table('cart')
         ->where('session_id', $this->setCartSession())
         ->select('id')

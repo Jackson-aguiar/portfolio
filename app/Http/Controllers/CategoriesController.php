@@ -22,6 +22,7 @@ class CategoriesController extends Controller
         return view('shop.admin.categories.categories-list', ['categories' => $categories]);
     }
 
+    //Lista todas as categorias
     public function list(){
         $categories = DB::table('categories')->get();
 

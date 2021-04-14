@@ -21,6 +21,7 @@ class CartProductsController extends Controller
 
     }
 
+    //Metodo retorna todos produtos do carrinho atual
     public function getProducts(){
         $cartController = new CartController;
 
@@ -37,6 +38,7 @@ class CartProductsController extends Controller
         return $products;
     }
 
+    //Metodo Retorna o Valor total do carrinho
     public function getTotal(){
         $cartController = new CartController;
 
@@ -67,6 +69,8 @@ class CartProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    //Metodo de inserção de produtos no carrinho
     public function store(Request $request)
     {
         $cart = new CartController;
@@ -123,6 +127,8 @@ class CartProductsController extends Controller
      * @param  \App\Models\CartProducts  $cartProducts
      * @return \Illuminate\Http\Response
      */
+
+    //Metodo de remoção de produtos no carrinho
     public function destroy($product_id)
     {
         $cartController = new CartController;

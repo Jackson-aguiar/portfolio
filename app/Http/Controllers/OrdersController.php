@@ -16,6 +16,7 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Metodo retorna todas os pedidos ao administrador
     public function index()
     {
         $orders = DB::table('orders')
@@ -27,6 +28,7 @@ class OrdersController extends Controller
         return view('shop.admin.orders.orders-list', ['orders' => $orders]);
     }
 
+    //Lista todos os pedidos do usuário atual
     public function list(){
         $orders = DB::table('orders')
         ->where('user_id', Auth::id())
@@ -87,6 +89,8 @@ class OrdersController extends Controller
      * @param  \App\Models\Orders  $orders
      * @return \Illuminate\Http\Response
      */
+
+    //Método para editar o status do pedido
     public function edit(Orders $order)
     {
         $order = DB::table('orders')

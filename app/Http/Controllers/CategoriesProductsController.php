@@ -20,6 +20,7 @@ class CategoriesProductsController extends Controller
         return view('shop.admin.products.product-categories', ['categories' => $categories]);
     }
 
+    //Lista todos os produtos dentro de uma categoria
     public function list($id){
         $products = DB::table('categories_products')
         ->where('categories_products.category_id', $id)
@@ -64,17 +65,20 @@ class CategoriesProductsController extends Controller
      */
     public function show($id)
     {
+        //Retorna a categoria atual pelo id
         $category = DB::table('categories')
         ->where('id', $id)
         ->select('id','name')
         ->first();
 
+        //Retorna os produtos que estão dentro da categoria, pelo ID
         $products_in = DB::table('categories_products')
         ->where('categories_products.category_id', $id)
         ->join('products', 'categories_products.product_id', '=', 'products.id')
         ->select('categories_products.category_id', 'products.name', 'products.id')
         ->get();
 
+        //Retorna os produtos que estão fora da categoria pelo ID
         $products_out = DB::table('products')->leftJoin('categories_products', function($join){
             $join->on('products.id', '=', 'categories_products.product_id');
         })->whereNotIn('id', function($query){

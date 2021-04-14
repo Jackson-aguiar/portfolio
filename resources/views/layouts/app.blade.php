@@ -32,7 +32,7 @@
                 <a class="nav-link" href="{{route('contacts')}}">Contato</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('curriculum')}}">Currículo</a>
+                <a class="nav-link" href="{{route('curriculum')}}">Download Currículo</a>
             </li>
           </ul>
         </div>
