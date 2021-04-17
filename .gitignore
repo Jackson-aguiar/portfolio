@@ -4,6 +4,7 @@
 /public/.htaccess
 /storage/*.key
 /vendor
+/app/Http/Controllers/Auth/RegisterController.php
 .env
 .env.backup
 .phpunit.result.cache
